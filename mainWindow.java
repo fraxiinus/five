@@ -90,17 +90,17 @@ public class mainWindow extends JFrame{
 				String coor = e.getActionCommand();
 				String coorx = coor.substring(0, 1);
 				String coory = coor.substring(1,2);
-
-				boolean placed = game.placeTile(Integer.parseInt(coorx), Integer.parseInt(coory));
-				JButton pressedButton = (JButton)e.getSource();
-				if (game.turn() == Turn.BLACK && placed) {
-					turnLabel.setText("WHITE'S TURN");
-					pressedButton.setBackground(Color.black);
-				} else if (game.turn() == Turn.WHITE && placed) {
-					turnLabel.setText("BLACK'S TURN");
-					pressedButton.setBackground(Color.white);
-				}
-				if (game.gameWon()) {
+				if(!game.gameWon()){
+					boolean placed = game.placeTile(Integer.parseInt(coorx), Integer.parseInt(coory));
+					JButton pressedButton = (JButton)e.getSource();
+					if (game.turn() == Turn.BLACK && placed) {
+						turnLabel.setText("WHITE'S TURN");
+						pressedButton.setBackground(Color.black);
+					} else if (game.turn() == Turn.WHITE && placed) {
+						turnLabel.setText("BLACK'S TURN");
+						pressedButton.setBackground(Color.white);
+					}
+				}else if(game.gameWon()) {
 					turnLabel.setText(game.turn() + " WON");
 					//System.exit(0);
 				}
