@@ -26,9 +26,7 @@ public class mainWindow extends JFrame{
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
+	// Launch the application.
 	public static void main(String[] args) {
 		Board game = new Board();
 		EventQueue.invokeLater(new Runnable() {
@@ -36,21 +34,14 @@ public class mainWindow extends JFrame{
 				try {
 					mainWindow frame = new mainWindow(game);
 					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+				} catch (Exception e) { e.printStackTrace(); }
 			}
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	// Create the frame.
 	public mainWindow(Board game) {
-		setTitle("FIVE");
-		setPreferredSize(new Dimension(800, 600));
 
-		//setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -70,7 +61,6 @@ public class mainWindow extends JFrame{
 		panelGame.setLayout(new GridLayout(0, 9, 1, 1));
 
 		JPanel panelButton = new JPanel();
-		panelButton.setPreferredSize(new Dimension(200, 10));
 		splitPane.setLeftComponent(panelButton);
 		GridBagLayout gbl_panelButton = new GridBagLayout();
 		gbl_panelButton.columnWidths = new int[]{0, 0};
@@ -90,7 +80,7 @@ public class mainWindow extends JFrame{
 				String coor = e.getActionCommand();
 				String coorx = coor.substring(0, 1);
 				String coory = coor.substring(1,2);
-				if(!game.gameWon()){
+				if (!game.gameWon()) {
 					boolean placed = game.placeTile(Integer.parseInt(coorx), Integer.parseInt(coory));
 					JButton pressedButton = (JButton)e.getSource();
 					if (game.turn() == Turn.BLACK && placed) {
@@ -100,11 +90,7 @@ public class mainWindow extends JFrame{
 						turnLabel.setText("BLACK'S TURN");
 						pressedButton.setBackground(Color.white);
 					}
-				}else if(game.gameWon()) {
-					turnLabel.setText(game.turn() + " WON");
-					//System.exit(0);
-				}
-
+				} turnLabel.setText(game.turn() + " WON");
 			}
 		};
 
@@ -118,49 +104,25 @@ public class mainWindow extends JFrame{
 				buttonArray[i][j].addActionListener(actionListener);
 			}
 		}
-		
-		MouseListener mouseListener = new MouseListener(){
 
+		MouseListener mouseListener = new MouseListener() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				//System.out.println("NEW GAME PRESSED");
 				turnLabel.setText("BLACK'S TURN");
-				for (JButton[] b : buttonArray){
-					for (JButton b2 : b){
-						b2.setBackground(Color.gray);
-					}
-				}
-				game.reset();
-				// TODO Auto-generated method stub
-				
+				for (JButton[] b : buttonArray) {
+					for (JButton b2 : b) b2.setBackground(Color.gray);
+				} game.reset();
 			}
-
 			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
+			public void mouseEntered(MouseEvent arg0) {}
 			@Override
-			public void mouseExited(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
+			public void mouseExited(MouseEvent arg0) {}
 			@Override
-			public void mousePressed(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
+			public void mousePressed(MouseEvent arg0) {}
 			@Override
-			public void mouseReleased(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-			
+			public void mouseReleased(MouseEvent arg0) {}
 		};
-		
+
 		JButton startButton = new JButton("NEW GAME");
 		GridBagConstraints gbc_startButton = new GridBagConstraints();
 		gbc_startButton.insets = new Insets(0, 0, 5, 0);
@@ -170,7 +132,5 @@ public class mainWindow extends JFrame{
 		panelButton.add(startButton, gbc_startButton);
 
 	}
-
-
 
 }
