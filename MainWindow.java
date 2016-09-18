@@ -12,18 +12,16 @@ import java.awt.GridBagLayout;
 import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import java.awt.Dimension;
 import javax.swing.JLabel;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.color.*;
 
-public class mainWindow extends JFrame{
+public class MainWindow extends JFrame{
 
+	private static final long serialVersionUID = 7851847865177905267L;
 	private JPanel contentPane;
 
 	// Launch the application.
@@ -32,7 +30,7 @@ public class mainWindow extends JFrame{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					mainWindow frame = new mainWindow(game);
+					MainWindow frame = new MainWindow(game);
 					frame.setVisible(true);
 				} catch (Exception e) { e.printStackTrace(); }
 			}
@@ -40,7 +38,7 @@ public class mainWindow extends JFrame{
 	}
 
 	// Create the frame.
-	public mainWindow(Board game) {
+	public MainWindow(Board game) {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
