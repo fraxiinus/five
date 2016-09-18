@@ -1,4 +1,4 @@
-![Image](http://imgur.com/a/5m6ij)
+![Image](http://imgur.com/a/5m6ij.jpg)
 
 # Five - a strategic game of connecting five
 A game that showcases the use of different Java swing layouts and components.
